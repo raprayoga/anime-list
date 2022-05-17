@@ -28,6 +28,9 @@ export default function AnimeCardList(props) {
   const skeleton = Array(16).fill(null);
   const cardWrapStyle = css`
     padding: 8px;
+    ${styling.MQMIN[2]} {
+      padding: 0;
+    }
     & > a {
       text-decoration: none;
     }
@@ -37,10 +40,10 @@ export default function AnimeCardList(props) {
     justify-content: space-around;
     display: grid;
     grid-template-columns: auto auto;
-    padding: 0 8px;
-    gap: 10px;
     ${styling.MQMIN[2]} {
       grid-template-columns: auto auto auto;
+      gap: 10px;
+      padding: 0 8px;
     }
     ${styling.MQMIN[3]} {
       grid-template-columns: auto auto auto auto;
@@ -65,7 +68,7 @@ export default function AnimeCardList(props) {
         <div css={cardWrapStyle} key={index}>
           <AnimeCardSkeleton />
         </div>
-        ))
+      ))
       ) : error && (
         <RefetchingCard  refetch={() => refetch()} />
       )}

@@ -13,7 +13,7 @@ import CustomArrow from 'components/atoms/CustomArrow';
 
 export default function BannerSlider(props) {
   const { loading, error, data, refetch, networkStatus } = GetAnimeRecomendation({perPage: 5});
-  const [arrow, setArrow] = useState(true);
+  const [arrow, setArrow] = useState(false);
 
   const settings = {
     dots: true,
@@ -30,7 +30,7 @@ export default function BannerSlider(props) {
   useEffect(() => {
     const checkDevice = () => {
       if (window.matchMedia(`(min-width: ${styling.BREAK_POINTS[2]}px)`).matches) {
-        setArrow(false)
+        setArrow(true)
       }
     }
     checkDevice();

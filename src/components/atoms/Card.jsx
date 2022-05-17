@@ -16,7 +16,7 @@ export default function Card(props) {
       width: 204px;
     }
     ${styling.MQMAX[1]} {
-      width: 100%;
+      width: 170px;
     }
   `
 

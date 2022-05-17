@@ -26,11 +26,8 @@ export default function AnimeListSlider(props) {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
     arrows: arrow,
     slidesToShow: numberShow,
-    slidesToScroll: 1,
     nextArrow: <CustomArrow />,
     prevArrow: <CustomArrow />
   };
@@ -98,7 +95,7 @@ export default function AnimeListSlider(props) {
                 dataAnime={data}
                 cssOverride={css`
                   ${styling.MQMAX[1]} {
-                    width: 180px;
+                    width: 170px;
                   }
                 `}
               />

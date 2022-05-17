@@ -24,7 +24,7 @@ function WithBottom() {
 
 function App() {
   return (
-    <Router history={history}>
+    <Router history={history} basename="/anime-list">
       <Navbar />
       <Header />
         <Routes>

@@ -1,12 +1,19 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react'
+import React, { useState } from 'react'
 import { css } from '@emotion/react'
 import Card from 'components/atoms/Card'
+import defaultImage from 'assets/image/default.png'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 function ImageAnime(props) {
+  const [onLoad, setOnLoad] = useState(false);
+
+  const showImage = () => {
+    setOnLoad(true)
+  }
+
   const cardCoverStyle = css`
     display: flex;
     justify-content: center;
@@ -20,7 +27,8 @@ function ImageAnime(props) {
   `
   return (
     <div css={cardCoverStyle}>
-      <img src={props.data.coverImage.large} alt={`image ${props.data.title.romaji}`} css={imageCardStyle} />
+      <img src={defaultImage} alt={`image onload`} css={imageCardStyle} style={ onLoad ? {display: "none"} : {}} />
+      <img src={props.data.coverImage.large} alt={`image ${props.data.title.romaji}`} onLoad={showImage} css={imageCardStyle} style={ onLoad ? {} : {display: "none"}} />
     </div>
   )
 }
