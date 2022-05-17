@@ -2,6 +2,7 @@
   "name": "anime-collection",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://raprayoga.github.io/anime-list/",
   "dependencies": {
     "@apollo/client": "^3.6.2",
     "@emotion/react": "^11.9.0",
@@ -26,7 +27,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -47,6 +50,7 @@
     ]
   },
   "devDependencies": {
-    "@emotion/babel-plugin": "^11.9.2"
+    "@emotion/babel-plugin": "^11.9.2",
+    "gh-pages": "^4.0.0"
   }
 }
