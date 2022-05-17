@@ -1,24 +1,44 @@
-import logo from './logo.svg';
+import routes from "./routers/index"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { createBrowserHistory } from "history";
 import './App.css';
+import {
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
+import BottomNavigate from './components/organisms/BottomNavigate'
+import Navbar from "components/organisms/Navbar";
+import Header from "components/organisms/Header";
+
+const history = createBrowserHistory();
+
+function WithBottom() {
+  const location = useLocation()
+  const myLocation = location.pathname.split('/')
+
+  return (
+    myLocation[1] != 'detail' &&
+    <BottomNavigate />
+  )
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router history={history}>
+      <Navbar />
+      <Header />
+        <Routes>
+          {routes.map((route, index) => (
+            <Route
+            key={index}
+            path={route.path}
+            exact={route.exact}
+            element={route.element}
+            />
+          ))}
+        </Routes>
+      <WithBottom />
+    </Router>
   );
 }
 

@@ -68,3 +68,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### React Emotion
+
+React Emotion with create react app using jsx pragma, add /** @jsxImportSource @emotion/react */ on first line on every file : https://stackoverflow.com/questions/70557943/emotions-css-props-not-working-with-create-react-app
+
+
+## COLOR PALLETE
+
+#2F8F9D, #3BACB6, #82DBD8, #B3E8E5
