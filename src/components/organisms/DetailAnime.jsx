@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import GetAnimeDetail from 'services/animeDetail'
 import { NetworkStatus } from '@apollo/client';
@@ -10,6 +10,7 @@ import { styling } from 'constants'
 
 function AnimeImage(props) {
   const animeImageStyle = css`
+    width: 70%;
     ${styling.MQMAX[1]} {
       width: 100%;
     }
@@ -17,8 +18,7 @@ function AnimeImage(props) {
 
   return (
     <>
-      <h2>{props.title}</h2>
-      <img src={props.image} alt={`image ${props.title}`} css={animeImageStyle} />
+      <img src={props.imageSrc} alt={`image ${props.title}`} css={animeImageStyle} />
     </>
   )
 }
@@ -37,7 +37,7 @@ function AnimeKeterangan(props) {
   const genresToString = props.data.genres.join(', ')
 
   return (
-    <div>
+    <div css={css`margin-left: 20px;`}>
       <h3>Information</h3>
       <h4>Genre</h4>
       <p>{genresToString}</p>
@@ -60,6 +60,10 @@ export default function DetailAnime(props) {
   let { id } = useParams();
   const { loading, error, data, refetch, networkStatus } = GetAnimeDetail({id: id});
 
+  useEffect(() => {
+    props.passAnimedata(data)
+  }, [data]);
+
   const detailStyle = css`
     margin: 0 auto;
     width: 98%;
@@ -67,6 +71,13 @@ export default function DetailAnime(props) {
     display: grid;
     grid-template-columns: 1fr;
     gap: 18px 16px;
+  `
+
+  const imageWrapStyle = css`
+    display: flex;
+    ${styling.MQMAX[1]} {
+      flex-direction: column;
+    }
   `
 
   return (
@@ -77,11 +88,14 @@ export default function DetailAnime(props) {
         <RefetchingCard  refetch={() => refetch()} />
       ) : (
         <div css={detailStyle}>
-          <AnimeImage 
-            title={data.Media.title.romaji}
-            image={data.Media.coverImage.extraLarge}
-          />
-          <AnimeKeterangan data={data.Media} />
+          <h2>{data.Media.title.romaji}</h2>
+          <div css={imageWrapStyle}>
+            <AnimeImage 
+              title={data.Media.title.romaji}
+              imageSrc={data.Media.coverImage.extraLarge}
+            />
+            <AnimeKeterangan data={data.Media} />
+          </div>
           <AnimeDescription description={data.Media.description}/>
         </div>
       )}

@@ -17,6 +17,7 @@ export default function BottomNavigate() {
     justify-content: space-around;
     background-color: #ffffff;
     box-shadow: rgb(108 114 124 / 16%) 0px -2px 4px 0px;
+    z-index: 99;
     ${styling.MQMIN[2]} {
       display: none;
     }

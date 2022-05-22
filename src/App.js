@@ -2,17 +2,16 @@ import routes from "./routers/index"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import './App.css';
-import {
-  useNavigate,
-  useLocation,
-} from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { initiateLocalStorage } from "stores/ManageCollection";
+
 import BottomNavigate from './components/organisms/BottomNavigate'
 import Navbar from "components/organisms/Navbar";
 import Header from "components/organisms/Header";
 
 const history = createBrowserHistory();
 
-function WithBottom() {
+function WithBottomNavigate() {
   const location = useLocation()
   const myLocation = location.pathname.split('/')
 
@@ -23,6 +22,8 @@ function WithBottom() {
 }
 
 function App() {
+  initiateLocalStorage()
+  
   return (
     <Router history={history} basename="/anime-list">
       <Navbar />
@@ -37,7 +38,7 @@ function App() {
             />
           ))}
         </Routes>
-      <WithBottom />
+      <WithBottomNavigate />
     </Router>
   );
 }

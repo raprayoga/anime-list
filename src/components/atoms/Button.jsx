@@ -15,14 +15,19 @@ export default function Button(props) {
     background-color: ${styling.COLOR.SECOND};
     border: none;
     color: white;
+    &:hover {
+      background-color: ${styling.COLOR.THIRD};
+      color: black;
+    }
   `
 
   return (
     <button
       className={props.className}
       css={buttonStyle}
-      onClick={props.onClick
-    }>
+      onClick={props.onClick}
+      type={props.type}
+      >
       {props.text}
     </button>
   )

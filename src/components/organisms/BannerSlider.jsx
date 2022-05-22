@@ -17,7 +17,6 @@ export default function BannerSlider(props) {
 
   const settings = {
     dots: true,
-    infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
@@ -45,12 +44,8 @@ export default function BannerSlider(props) {
       ) : (
         <Slider {...settings}>
           { data.Page.recommendations.map((data, index)=> (
-          <Link to={`/detail/${data.media.id}`}>
-            <div key={index}>
-              <Banner
-                dataAnime={data}
-              />
-            </div>
+          <Link to={`/detail/${data.media.id}`}  key={index}>
+            <Banner dataAnime={data} />
           </Link>
           ))}
           </Slider>

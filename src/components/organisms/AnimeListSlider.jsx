@@ -24,7 +24,6 @@ export default function AnimeListSlider(props) {
   
   const settings = {
     dots: false,
-    infinite: true,
     speed: 500,
     arrows: arrow,
     slidesToShow: numberShow,

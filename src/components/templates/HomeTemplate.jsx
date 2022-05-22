@@ -8,6 +8,7 @@ import { styling } from 'constants'
 export default function HomeTemplate() {
   const container = css`
     margin: auto;
+    width: 100%;
     max-width: 960px;
     ${styling.MQMIN[4]} {
       max-width: 1280px;

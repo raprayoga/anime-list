@@ -6,7 +6,7 @@ export default function CustomArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", color:'black', background: "#7a797996" }}
+      style={{ ...style, display: "block", color:'black', background: "#7a797996", borderRadius: '50%'}}
       onClick={onClick}
     />
   );
