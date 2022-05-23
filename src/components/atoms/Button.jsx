@@ -29,6 +29,7 @@ export default function Button(props) {
       type={props.type}
       >
       {props.text}
+      {props.child}
     </button>
   )
 }

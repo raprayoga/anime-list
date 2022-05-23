@@ -17,6 +17,11 @@ function HeaderModal(props) {
     padding-top: auto;
     margin-top: 8px;
     padding: auto;
+    &:hover {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
   `
 
   return (

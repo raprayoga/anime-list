@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import AnimFavoriteList from 'components/organisms/AnimFavoriteList'
 import CollectionList from 'components/organisms/CollectionList'
-import { showCollectionAlbum } from 'stores/ManageCollection'
+import { showCollectionAlbum, removeCollectionAlbum } from 'stores/ManageCollection'
 
 import { css } from '@emotion/react'
 import { styling } from 'constants'
@@ -26,6 +26,13 @@ export default function FavoriteTemplate() {
     setCollectionChoosed(true)
   }
 
+  const removeCollect = async (name) => {
+    await removeCollectionAlbum(name.name)
+    setAnimeList({})
+    getDataCollect()
+    setCollectionChoosed(false)
+  }
+
   const container = css`
     margin: auto;
     max-width: 800px;
@@ -40,6 +47,7 @@ export default function FavoriteTemplate() {
       <CollectionList 
         data={collections}
         chooseCollect={(e) => chooseCollect(e)}
+        removeCollect={(e) => removeCollect(e)}
         />
       <AnimFavoriteList
         data={animeList}
