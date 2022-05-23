@@ -82,6 +82,10 @@ const Modal = forwardRef((props, ref) => {
 
     showModal() {
       setDisplayModal('block')
+    },
+
+    closeModal() {
+      setDisplayModal('none')
     }
 
   }));

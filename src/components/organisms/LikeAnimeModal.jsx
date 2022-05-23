@@ -17,10 +17,14 @@ export default function LikeAnimeModal(props) {
   const updateData = (data) => {
     props.updateData(data)
   }
+
+  const likeAnime = (data) => {
+    props.likeAnime(data)
+  }
   
   const insideModal = () => {
     return !addCollection ?
-    ChooseCollection({hideAddNewCollect: () => hideAddNewCollect(), showAddNewCollect: () => showAddNewCollect()})
+    ChooseCollection({showAddNewCollect: () => showAddNewCollect(), likeAnime: (e) => likeAnime(e)})
     :
     AddNewCollecModal({hideAddNewCollect: () => hideAddNewCollect(), updateData: (e) => updateData(e)})
   }

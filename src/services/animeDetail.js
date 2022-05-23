@@ -11,6 +11,7 @@ export default function GetAnimeDetail(props) {
         status
         coverImage {
           extraLarge
+          large
         }
         meanScore
         genres

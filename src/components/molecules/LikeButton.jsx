@@ -5,7 +5,7 @@ import { faHeartCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { css } from '@emotion/react';
 import Button from 'components/atoms/Button';
 
-export default function LikedButton(props) {
+export default function LikeButton(props) {
   const likeStyle = css`
     font-size: 18px;
     position: fixed;

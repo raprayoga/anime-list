@@ -24,9 +24,9 @@ function BodyModal(props) {
   const collections = useContext(CollectionsContext);
   const detailAnime = useContext(AnimeDetailContext);
 
-  const addCollection = async (event) => {
-    const resp = await likeAnime(event.target.textContent, detailAnime)
-    console.log(resp)
+  const handleLikeAnime = async (collectName) => {
+    await likeAnime(collectName, detailAnime)
+    props.likeAnime(collectName);
   }
 
   const ButtonAdd = () => {
@@ -77,7 +77,7 @@ function BodyModal(props) {
         <Button
           key={index}
           css={collectionStyle}
-          onClick={(a) => addCollection(a)}
+          onClick={() => handleLikeAnime(collectionName)}
           text={collectionName}
         />
     ))}
@@ -96,13 +96,12 @@ export default function ChooseCollection(props) {
     props.showAddNewCollect();
   }
 
-  const hideAddNewCollect = () => {
-    props.hideAddNewCollect();
+  const likeAnime = (data) => {
+    props.likeAnime(data);
   }
 
-
   return {
-    header: <HeaderModal hideAddNewCollect={() => hideAddNewCollect()} />,
-    content: <BodyModal showAddNewCollect={() => showAddNewCollect()} />
+    header: <HeaderModal />,
+    content: <BodyModal showAddNewCollect={() => showAddNewCollect()} likeAnime={(e) => likeAnime(e)} />
   }
 }

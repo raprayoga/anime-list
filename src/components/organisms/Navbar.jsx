@@ -47,7 +47,6 @@ export default function Navbar() {
       <div css={linkStyle}>
         <Link to="/"> Home </Link>
         <Link to="/category"> Category </Link>
-        <Link to="/search"> Search </Link>
         <Link to="/favorite"> Favorite </Link>
       </div>
     </div>

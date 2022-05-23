@@ -2,7 +2,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faHeart, faMagnifyingGlass, faTableCellsLarge } from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faHeart, faTableCellsLarge } from "@fortawesome/free-solid-svg-icons";
 
 import { css } from '@emotion/react'
 import { styling } from 'constants'
@@ -47,12 +47,6 @@ export default function BottomNavigate() {
         <div>
           <FontAwesomeIcon icon={faTableCellsLarge} color={'#a5a6a8'}/>
           <p css={navigateTextStyle}>Category</p>
-        </div>
-      </Link>
-      <Link to="/search">
-        <div>
-          <FontAwesomeIcon icon={faMagnifyingGlass} color={'#a5a6a8'}/>
-          <p css={navigateTextStyle}>Search</p>
         </div>
       </Link>
       <Link to="/favorite">

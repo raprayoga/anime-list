@@ -74,6 +74,9 @@ export default function RefetchingCard(props) {
           height: '120px',
           width: '100%',
         },
+        [styling.MQMAX[1]]: {
+          width: '100%'
+        }
       }}
     />
   )

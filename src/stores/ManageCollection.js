@@ -55,7 +55,7 @@ function removeAnime(collectionName, id) {
   const collectionList = data.collections
   if ( collectionList[collectionName] === undefined ) return {sucess: false, message: 'collection does not exist'}
 
-  if ( collectionList[collectionName][id] !== undefined ) return {sucess: false, message: 'anime has removed before'}
+  if ( collectionList[collectionName][id] == undefined ) return {sucess: false, message: 'anime has removed before'}
   
   delete data.collections[collectionName][id]
   localStorage.setItem("collections", JSON.stringify(data))
@@ -68,16 +68,16 @@ function animeAlreadyLiked(id) {
   data = JSON.parse(data)
   const collectionList = data.collections
 
-  let doesAnimeExist = []
-  doesAnimeExist = Object.keys(collectionList).map(function(collectionName) {
+  let doesAnimeExist = null
+  Object.keys(collectionList).map(function(collectionName) {
     Object.keys(collectionName).map(function(idAnime) {
-      if (collectionList[collectionName][idAnime] !== undefined) {
-        return collectionList[collectionName][idAnime]
+      if (collectionList[collectionName][id] !== undefined) {
+        doesAnimeExist = {data: collectionList[collectionName][id], collectionName: collectionName}
       }
     });
   });
 
-  return doesAnimeExist 
+  return doesAnimeExist
 }
 
 export { initiateLocalStorage, showCollectionAlbum, addCollectionAlbum, removeCollectionAlbum, likeAnime, removeAnime, animeAlreadyLiked }
