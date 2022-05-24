@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import AnimFavoriteList from 'components/organisms/AnimFavoriteList'
 import CollectionList from 'components/organisms/CollectionList'
 import { showCollectionAlbum, removeCollectionAlbum } from 'stores/ManageCollection'
+import voidIllustration from 'assets/image/voidIllustration.png'
 
 import { css } from '@emotion/react'
 import { styling } from 'constants'
@@ -42,17 +43,31 @@ export default function FavoriteTemplate() {
     }
   `
 
+  const illustrationStyle = css`
+    margin-top: 30px;
+    width: 100%;
+    margin: auto;
+    max-width: 600px;
+  `
+
   return (
     <div css={container}>
-      <CollectionList 
-        data={collections}
-        chooseCollect={(e) => chooseCollect(e)}
-        removeCollect={(e) => removeCollect(e)}
-        />
-      <AnimFavoriteList
-        data={animeList}
-        collectionChoosed={collectionChoosed}
-      />
+      {Object.keys(collections).length > 0 ? (
+        <>
+          <CollectionList 
+            data={collections}
+            chooseCollect={(e) => chooseCollect(e)}
+            removeCollect={(e) => removeCollect(e)}
+            />
+          <AnimFavoriteList
+            data={animeList}
+            collectionChoosed={collectionChoosed}
+          />
+        </>
+      ) : (
+        <img src={voidIllustration} alt={`image onload`} css={illustrationStyle} />
+      )
+      }
     </div>
   )
 }

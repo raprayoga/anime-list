@@ -42,7 +42,7 @@ export default function AnimFavoriteList(props) {
 
   return (
     <div css={cardContainerStyle}>
-      {Object.keys(props.data).length > 0 ?       
+      {Object.keys(props.data).length > 0 ?    
       Object.keys(props.data).map((key) => (
         <div css={cardWrapStyle} key={props.data[key].Media.id}>
           <Link to={`/detail/${props.data[key].Media.id}`}>
